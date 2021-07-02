@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-native
+spec:
+  replicas: 2
+  selector: 
+    matchLabels:
+      app: cloud-native
+  template:
+    metadata:
+      labels: 
+        app: cloud-native
+    spec:
+      containers: 
+      - name: site
+        image: chsluz/cloud-native:v2
+        imagePullPolicy: Always
+        ports: 
+        - containerPort: 3001
